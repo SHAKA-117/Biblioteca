@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block titulo %}Inicio{% endblock %}
+{% block body %}
+{% with messagges = get_flashed_messages() %}
+{% if messagges %}
+{% for messagge in messagges %}
+   <div class="container mt-4">
+       <div class="alert alert-success alert-dismissible fade show" role="alert">
+	   {{ messagge }}
+	   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+   </div>
+{% endfor%}
+{% endif %}
+{% endwith %}
+<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark">
+  <div class="container-fluid">
+    <p class="navbar-brand">Bibloteca-Teleo</p>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+	    <a class="nav-link active" aria-current="page" href="/Inicio">Inicio</a>
+       </li>
+       <li>
+	    <a class="nav-link active" aria-current="page" href="/Lista_Usuario">Listar Usuario</a>
+       </li>
+	<li>
+	    <form class="d-flex" action="/index" role="search">
+		<input class="form-control me-2" type="search" value="{{valor_buscado}}" name="Busqueda" placeholder="Buscar Usuario" aria-label="Search">
+		<button class="btn btn-outline-success" type="submit">Search</button>
+	    </form>
+	</li>
+      </ul>
+      <ul class="navbar-nav justify-content-end">
+	  <li class="nav-item dropdown">
+	      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Cuenta
+	      </a>
+	      <ul class="dropdown-menu">
+		  <li><a class="dropdown-item" href="/Perfil">Perfil</a></li>
+		  <li><hr class="dropdown-divider"></li>
+		  <li><a class="dropdown-item" href="/Cerrar_Sesion">Cerrar_Sesion</a></li>
+	      </ul>
+	  </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div>
+    <div class="container mt-4">
+	<table class="table table-bordered"> 
+	    <thead>
+		<tr  class="table-primary">
+		    <th>Usuario</th>
+		    <th>Nombre</th>
+		    <th>Primer Apellido</th>
+		    <th>Segundo Apellido</th>
+		    <th></th>
+		    <th></th>
+		    <th></th>
+		</tr>
+	    </thead>
+	    <tbody>
+		{% set count = namespace(a=0) %}
+                {% for libros in result %} 
+                    <tr>
+			<td> {{ libros[0] }} </td>
+			<td> {{ libros[1] }} </td>
+                        <td> {{ libros[2] }} </td>
+			<td> {{ libros[3] }} </td>
+			<td> <a class="btn btn-outline-dark" href="/Editar/{{ libros[0] }}">Editar</a> </td>
+			<td> <a class="btn btn-outline-dark" href="/Eliminar/{{ libros[0] }}">Eliminar</a> </td>
+			<td> <a class="btn btn-outline-dark" href="/Lista_Prestamo/{{ libros[0] }}">Ver Libros</a> </td>
+                    </tr>
+	        {% set count.a = count.a + 1 %}
+                {% endfor %}
+	    </tbody>
+	</table>
+    </div>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+      {% if valor_anterior >= 0 %}
+      <li class="page-item">
+	  <a class="page-link" href="?comienzo={{valor_anterior}}&Busqueda={{valor_buscado}}" aria-label="Previous">
+	      <span aria-hidden="true">Anterior</span>
+	  </a>
+      </li>
+      {% endif %}
+      {% for numero in range(resultado_pagina) %}
+      <li class="page-item"><a class="page-link" href="?indice={{numero}}">{{ numero + 1}}</a></li>
+      {% endfor %}
+      {% if  valor_siguiete < total_datos %}
+      <li class="page-item">
+	  <a class="page-link" href="?comienzo={{valor_siguiete}}&Busqueda={{valor_buscado}}" aria-label="Next">
+	  <span aria-hidden="true">Siguiente</span>
+	  </a>
+      </li>
+      {% endif %}
+  </ul>
+</nav>
+{% endblock %} 

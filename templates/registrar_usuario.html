@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block titulo %}Registro{% endblock %}
+{% block body %}
+{% with messagges = get_flashed_messages() %}
+{% if messagges %}
+{% for messagge in messagges %}
+   <div class="container mt-4">
+       <div class="alert alert-danger alert-dismissible fade show" role="alert">
+	   {{ messagge }}
+	   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+   </div>
+{% endfor%}
+{% endif %}
+{% endwith %}
+<div class="row">
+     <div class="col-md-5">
+	 <div class="card card-body">
+	     <form action="/Registrar_Usuario" method="POST">
+		 <div class="form-floating">
+		     <input class="form-control"  type="text" name="Correo" placeholder="Correo">
+		     <label for="floatingInput">Correo</label>
+		 </div>	 
+		 <div class="form-floating">
+		     <input class="form-control"  type="text" name="Nombre" placeholder="Nombre">
+		     <label for="floatingInput">Nombre</label>
+		 </div>
+		 <div class="form-floating">
+		     <input class="form-control"  type="text" name="Primer_Apellido" placeholder="Primer_Apellido">
+		     <label for="floatingInput">Primer_Apellido</label>
+		 </div>
+		 <div class="form-floating">
+		     <input class="form-control"  type="text" name="Segundo_Apellido" placeholder="Segundo_Apellido">
+		     <label for="floatingInput">Segundo_Apellido</label>
+		 </div>
+		 <div class="form-floating">
+		     <input class="form-control"  type="text" name="Edad" placeholder="Edad">
+		     <label for="floatingInput">Edad</label>
+		 </div>		
+		 <div class="form-floating">
+		     <input class="form-control"  type="text" name="Contrasena" placeholder="Contraseña">
+		     <label for="floatingInput">Contraseña</label>
+		 </div>  
+		 <div class="form-floating">
+		     <input class="form-control" type="text" name="Numero_Telefonico" placeholder="Numero Telefonico">
+		     <label for="floatingInput">Numero Telefonico</label>
+		 </div>
+		 <div class="form-group">
+		     <button class="btn btn-primary btn-block" type="submit">Registrar</button>
+		     <a class="btn btn-primary" href="/Principal">Regresar</a>
+		 </div>
+	     </form>
+	 </div>
+     </div>
+ </div>
+{% endblock %}

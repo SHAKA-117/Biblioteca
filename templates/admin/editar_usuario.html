@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block titulo %}Editar-Libro{% endblock %}
+{% block body %}
+<div class="row">
+     <div class="col-md-5">
+	 <div class="card card-body">
+	     <form action="/Editar_Libro/{{ result[0] }}" method="POST">
+		 <div class="form-group pb-1 border-bottom">
+		     <input class="form-control"  type="text" name="Nombre" value="{{ result[1] }}">
+		 </div>
+		 <div class="form-group">
+		     <input class="form-control" type="text" name="Primer_Apellido" value="{{ result[2] }}">
+		 </div>
+		 <div class="form-group">
+		     <input class="form-control" type="text" name="Segundo_Apellido" value="{{ result[3] }}">
+		 </div>
+		 <div class="form-group">
+		     <input class="form-control" type="text" name="Edad" value="{{ result[4] }}">
+		 </div>
+		 <div class="form-group">
+		     <input class="form-control" type="text" name="Correo" value="{{ result[5] }}">
+		 </div>
+		 <div class="form-group">
+		     <input class="form-control" type="text" name="Numero_Telefonico" value="{{ result[6] }}">
+		 </div>
+
+		 <div class="form-group">
+		     <button class="btn btn-primary btn-block" type="submit">Guardar</button>
+    		     <a class="btn btn-primary btn-block" href="/Inicio_Adminitrador">Regresar</a>
+		 </div>
+	     </form>
+	 </div>
+     </div>
+ </div>
+{% endblock %}

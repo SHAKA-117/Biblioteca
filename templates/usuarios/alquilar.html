@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block titulo %}Alquilar{% endblock %}
+{% block body %}
+<div class="row justify-content-md-center">
+     <div class="col-md-5">
+	 <div class="card card-body">
+	     <form action="/Alquilar_Libro/{{Id_Libro}}" method="POST">
+		 <div class="form-floating">
+		     <input class="form-control"  type="text" name="Nombre" placeholder="Nombre_Libro" value="{{ result[0] }}" disabled readonly>
+		     <label for="floatingInput">Nombre Libro</label>
+		 </div>
+	         <div class="form-floating">
+		     <input class="form-control" type="text" name="Genero" placeholder="Genero" value="{{ result[1] }}" disabled readonly>
+		     <label for="floatingInput">Genero</label>
+		 </div>
+		 <div class="form-floating">
+		     <input class="form-control" type="text" name="Autor" placeholder="Autor" value="{{ result[2] }}" disabled readonly>
+		     <label for="floatingInput">Autor</label>
+		 </div>
+		 <div class="form-floating">
+		     <input class="form-control"  type="text" id="Inicio_Fecha" value="{{fecha_inicio}}" disabled readonly>
+		     <label for="floatingInput">Inicio Prestamo</label>
+		 </div>
+		 <div class="form-floating">
+		     <input class="form-control"  type="text" name="Fin_Fecha" value="{{fecha_final}}" disabled readonly>
+		     <label for="floatingInput">Final Prestamo</label>
+		 </div>
+		<div class="form-group">
+		    <button class="btn btn-primary btn-block" type="submit">Alquilar</button>
+		    <a class="btn btn-primary btn-block" href="/Inicio_Usuario">Regresar</a>	    
+    		 </div>
+		 <input type="hidden" name="Inicio_Fecha2" value="{{ fecha_inicio }}">
+		 <input type="hidden" name="Fin_Fecha2" value="{{ fecha_final }}">
+	    </form>
+	</div>
+     </div>
+ </div>
+{% endblock %}

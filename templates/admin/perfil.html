@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block titulo %}Perfil{% endblock %}
+{% block body %}
+<div class="row justify-content-md-center">
+     <div class="col-md-5">
+	 <div class="card card-body">
+	     <form action="/Inicio_sesion" method="POST">
+		 <div class="form-floating">
+		     <input class="form-control"  type="text" name="Nombre" placeholder="Nombre" value="{{ result[0] }}">
+		     <label for="floatingInput">Nombre</label>
+		 </div>
+	         <div class="form-floating">
+		     <input class="form-control" type="text" name="Primer_Apellido" placeholder="Primer Apellido" value="{{ result[1] }}">
+		     <label for="floatingInput">Primer Apellido</label>
+		 </div>
+		 <div class="form-floating">
+		     <input class="form-control" type="text" name="Segundo_Apellido" placeholder="Segundo Apellido" value="{{ result[2] }}">
+		     <label for="floatingInput">Segundo Apellido</label>
+		 </div>
+		 <div class="form-floating">
+		     <input class="form-control" type="text" name="Edad" placeholder="Edad" value="{{ result[3] }}">
+		     <label for="floatingInput">Edad</label>
+		 </div>
+		 <div class="form-floating">
+		     <input class="form-control" type="text" name="Correo" placeholder="Correo" value="{{ result[4] }}">
+		     <label for="floatingInput">Correo</label>
+		 </div>
+		 <div class="form-floating">
+		     <input class="form-control" type="text" name="Numero_Telefonico" placeholder="Numero Telefonico" value="{{ result[5] }}">
+		     <label for="floatingInput">Numero Telefonico</label>
+		 </div>
+		 <div class="form-group">
+		     <button class="btn btn-primary btn-block" type="submit">Guardar</button>
+		     <a class="btn btn-primary btn-block" href="/Inicio_Adminitrador">Regresar</a>
+    		 </div>
+	     </form>
+	 </div>
+     </div>
+ </div>
+{% endblock %}

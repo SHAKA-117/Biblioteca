@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block titulo %}Editar-Libro{% endblock %}
+{% block body %}
+<div class="row">
+     <div class="col-md-5">
+	 <div class="card card-body">
+	     <form action="/Editar_Libro/{{ result[0] }}" method="POST">
+		 <div class="form-group pb-1 border-bottom">
+		     <input class="form-control"  type="text" name="Nombre" value="{{ result[1] }}">
+		 </div>
+		 <div class="form-group form-floating">
+		     <select class="form-select" name="Genero">
+			 <option selected>{{ result[2] }}</option>
+			 {% for Genero in genero %}
+			 {% if result[2] != Genero[0] %}
+		            <option>{{ Genero[0] }}</option>
+			 {% endif %}
+			 {% endfor %}
+		     </select>
+		     <label for="floatingSelect">Selecciona el genero</label>
+		 </div>
+		 <div class="form-group form-floating">
+		     <select class="form-select" name="Autor">
+			 <option selected>{{result[3]}}</option>
+			 {% for Autor in autor %}
+			 {% if result[3] != Autor[0] %}
+		            <option>{{ Autor[0] }}</option>
+			 {% endif %}
+			 {% endfor %}
+		     </select>
+		     <label for="floatingSelect">Selecciona el autor</label>
+		 </div>
+		 <div class="form-group">
+		     <input class="form-control" type="text" name="Estado" value="{{ result[4] }}">
+		 </div>
+		 <div class="form-group">
+		     <button class="btn btn-primary btn-block" type="submit">Guardar</button>
+		     <a class="btn btn-primary btn-block" href="/Inicio_Adminitrador">Regresar</a>
+		 </div>
+	     </form>
+	 </div>
+     </div>
+ </div>
+{% endblock %}

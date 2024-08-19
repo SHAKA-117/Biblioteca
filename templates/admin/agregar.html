@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block titulo %}Agregar-Libro{% endblock %}
+{% block body %}
+ <div>
+     <form action="/Agregar_Libro" method="post">
+	 <input type="text" name="Nombre" placeholder="Nombre Libro">
+	 <select name="Genero">
+	     {% for genero in result %} 
+	        <option>{{ genero[0] }}</option>
+	     {% endfor %}
+	 </select>
+	 <select name="Autor">
+	     {% for Autor in autor %} 
+	        <option>{{ Autor[0] }}</option>
+	     {% endfor %}
+	 </select>
+	 <button type="submit">Guardar</button>
+     </form>
+ </div>
+ {% endblock %}
